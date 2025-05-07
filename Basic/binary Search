@@ -1,1 +1,33 @@
 
+// Problem with (left + right) / 2:
+// If left and right are large integers, their sum might exceed the limit of int
+//{
+// int left = 2_000_000_000;
+// int right = 2_100_000_000;
+// int mid = (left + right) / 2; // Risk of overflow!
+//}
+// Max value of int in Java = 2,147,483,647
+// left + right = 4,100,000,000 → this overflows and gives a negative number
+
+public class Main {
+
+  public static int binarySearch(int[] arr,int target){
+      Arrays.sort(arr);
+      int left=0,right=arr.length-1;
+          while (left<=right){
+              int mid=left+(right-left)/2;
+               System.out.println(mid);
+              if(arr[mid]==target) return mid;
+              else if(target>arr[mid])
+                  left=mid+1;
+              else right=mid-1;
+          }
+      return -1;
+  }   
+
+    public static void  main(String[] args) {        
+        int[] arr={2,4,6,8,9};
+        System.out.println(binarySearch(arr,9));
+        
+    }   
+}
