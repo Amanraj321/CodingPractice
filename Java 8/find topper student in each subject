@@ -1,1 +1,40 @@
 
+class Student{
+    private String name;
+    private Map<String,Integer> marks;
+    public Student(String name,Map<String,Integer> marks){
+        this.name=name;
+        this.marks=marks;
+    }
+     public String getName(){
+         return name;
+     }
+   
+    public Map<String,Integer> getMarks(){
+        return marks;
+    }
+    
+}
+ 
+public class Main{
+    
+    public static void main(String args[]){
+      List<Student> students=Arrays.asList(
+          new Student("aman",Map.of("Math",34,"phy",54,"chem",78)),
+          new Student("vikash",Map.of("Math",44,"phy",84,"chem",48)),
+          new Student("Amit",Map.of("Math",94,"phy",34,"chem",28))
+      );
+       Map<String,AbstractMap.SimpleEntry<String,Integer>> map= students.stream()
+                                .flatMap(s->s.getMarks().entrySet().stream()
+                                    .map(entry->new AbstractMap.SimpleEntry<>(entry.getKey(),new AbstractMap.SimpleEntry<>(s.getName(),entry.getValue())))) //{subject,{name,marks}}
+                                 .collect(Collectors.toMap(
+                                      Map.Entry::getKey,
+                                      Map.Entry::getValue,  //{name,marks}
+                                      (a,b)->a.getValue()>b.getValue()?a:b
+                                  ));
+        map.forEach((subject,marks)->
+                    System.out.println(subject+"-->"+marks.getKey()+"-->"+marks.getValue())
+                    );
+        
+    }
+}
