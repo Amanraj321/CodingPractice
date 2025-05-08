@@ -1,1 +1,45 @@
+ class Node{
+     int data;
+     Node next;
+     public Node(int data){
+         this .data=data;
+         this.next=null;
+     }
+ }
+// h    s          f
+//10-->20-->30-->40-->null
+public class Main {
+
+   public static Node shiftElementByk(Node head,int k){
+       Node slow=head;
+       Node fast=head;
+       for(int i=0;i<k;i++){
+           fast=fast.next;
+       }
+       while(fast.next!=null){
+           slow=slow.next;
+           fast=fast.next;
+       }
+//Main component to understand 
+       fast.next=head;
+       head=slow.next;
+       slow.next=null;
+       return head;
+   }
+
+    public static void  main(String[] args) {
+          
+        Node head=new Node(10);
+         head.next=new Node(20);
+         head.next.next=new Node(30);
+         head.next.next.next=new Node(40);
+        
+        Node result=shiftElementByk(head,2);
+            System.out.println("expecteted result=30->40->10->20->null");
+            while(result!=null){
+                System.out.print(result.data+"-->");
+                result=result.next;
+            }
+    }   
+}
 
