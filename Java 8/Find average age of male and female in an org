@@ -1,4 +1,4 @@
-public class Main {
+ public class Main {
     public static void main(String[] args) {
         List<Employee> employees = Arrays.asList(
             new Employee("Alice", "Female", 30),
