@@ -1,1 +1,32 @@
+public class Main{
+    
+    public static void main(String[] args){
+     String str="sanadilnashin";
+//frequency of each character in a string     
+        Arrays.stream(str.split(""))
+            //.collect(Collectors.groupingBy(Function.identity(),Collectors.counting()))
+            //.collect(Collectors.groupingBy(e->e,Collectors.counting()))
+            .collect(Collectors.groupingBy(e->e,LinkedHashMap::new,Collectors.counting()))
+            .entrySet()
+            .forEach(e->System.out.println(e.getKey()+"-->"+e.getValue())); 
+        
+//first non repeating character
+        Arrays.stream(str.split(""))
+            .collect(Collectors.groupingBy(e->e,LinkedHashMap::new,Collectors.counting()))
+            .entrySet()
+            .stream()
+            .filter(e->e.getValue()==1)
+            .findFirst()
+            .ifPresent(e->System.out.println(e.getKey()+"->"+e.getValue()));
+    }
+// s-->2
+// a-->3
+// n-->3
+// d-->1
+// i-->2
+// l-->1
+// h-->1
+//  //non repeating       
+// d->1
+}
 
