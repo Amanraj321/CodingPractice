@@ -1,1 +1,41 @@
+class Employe{
+    private String name;
+    private String dept;
+    private int salary;
+     public Employe(String name, String dept, int salary){
+         this.name=name;
+         this.dept=dept;
+         this.salary=salary;
+     }
+    public String getName(){
+        return name;
+    }
+    public int getSalary(){
+        return salary;
+    }
+     @Override
+    public String toString() {
+        return "Name: " + name + ", dept: " + dept+"salary:"+salary;
+    }
+}
+
+public class Main{
+    
+    public static void main(String[] args){
+   List<Employe> employee= List.of(
+          new Employe("Aman","IT",3450),
+          new Employe("amit","ECE",2350),
+          new Employe("viki","CS",5450)
+     );
+//2nd highest salary with name
+        employee.stream()
+            .sorted(Comparator.comparing(Employe::getSalary).reversed()
+                              .thenComparing(Employe::getName))
+            .skip(1)
+            .findFirst()
+            .ifPresent(System.out::println);
+          
+    }
+}
+
 
