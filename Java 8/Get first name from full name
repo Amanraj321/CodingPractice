@@ -7,7 +7,7 @@ public class Main{
                                     .collect(Collectors.toList());
         System.out.println(firstNames);
             
-    }  
+    }   
 }
 //[aman, amit, rani, sana]
 
