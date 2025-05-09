@@ -1,1 +1,16 @@
 
+public class Main{
+    
+    public static void main(String[] args){
+     String[] str={"aman","amit","rani","sana"};
+       Arrays.stream(str)
+            .filter(s->s.contains("an"))
+            .collect(Collectors.toList()).stream()
+            .forEach(System.out::println);
+        
+    }  
+}
+//aman
+// rani
+// sana
+
