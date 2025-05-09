@@ -1,1 +1,20 @@
+public class Main {
+    public static void main(String[] args) {
+        List<Employee> employees = Arrays.asList(
+            new Employee("Alice", "Female", 30),
+            new Employee("Bob", "Male", 25),
+            new Employee("Clara", "Female", 28),
+            new Employee("David", "Male", 35),
+            new Employee("Eva", "Female", 32)
+        );
 
+        Map<String, Double> avgAgeByGender = employees.stream()
+            .collect(Collectors.groupingBy(
+                Employee::getGender,
+                Collectors.averagingInt(Employee::getAge)
+            ));
+
+        avgAgeByGender.forEach((gender, avgAge) ->
+            System.out.println(gender + " average age: " + avgAge));
+    }
+}
