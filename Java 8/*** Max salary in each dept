@@ -1,1 +1,48 @@
 
+class Employe{
+    private String name;
+    private String dept;
+    private int salary;
+     public Employe(String name, String dept, int salary){
+         this.name=name;
+         this.dept=dept;
+         this.salary=salary;
+     }
+    public String getName(){
+        return name;
+    }
+    public String getDept(){
+        return dept;
+    }
+    public int getSalary(){
+        return salary;
+    }
+     @Override
+    public String toString() {
+        return "Name: " + name + ", dept: " + dept+"salary:"+salary;
+    }
+}
+
+public class Main{
+    
+    public static void main(String[] args){
+   List<Employe> employee= List.of(
+          new Employe("Aman","IT",6450),
+          new Employe("suman","IT",3450),
+          new Employe("amit","ECE",6350),
+          new Employe("ramit","ECE",2350),
+          new Employe("viki","CS",5450),
+          new Employe("riki","CS",6450)
+     );
+        //2nd highest salary with name
+        employee.stream()
+                        .collect(Collectors.groupingBy(Employe::getDept,Collectors.maxBy(Comparator.comparing(Employe::getSalary))))
+                        .entrySet()
+                        .forEach(e->System.out.println(e.getKey()+"->"+e.getValue().get()));
+          
+    }
+}
+// CS->Name: riki, dept: CSsalary:6450
+// ECE->Name: amit, dept: ECEsalary:6350
+// IT->Name: Aman, dept: ITsalary:6450
+
