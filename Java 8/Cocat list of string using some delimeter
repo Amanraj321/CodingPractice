@@ -15,3 +15,8 @@ public class Main{
 //[aman, amit, rani, sana]
 //aman-amit-rani-sana
 
+
+1.  List<String> str=Stream.concat(list1.stream(),list2.stream()).collect(Collectors.toList());
+2.  List<String> items = Arrays.asList("Java", "Python", "C++");
+        String result = String.join(", ", items);
+        System.out.println(result); // Output: Java, Python, C++
