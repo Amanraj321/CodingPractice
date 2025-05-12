@@ -1,0 +1,22 @@
+
+public class Main {
+   
+    public static boolean pallindrome(String str){
+         int left=0;int right=str.length()-1;
+         if(str==null) return false;
+             while(left<right){
+                if(str.charAt(left)!=str.charAt(right)) 
+                    return false;
+                 left++;
+                 right--;
+            }
+         return true;
+    }
+    
+    public static void main(String[] args) {
+         
+    String str="amma";
+     System.out.println( pallindrome(str));
+               
+    }
+}
