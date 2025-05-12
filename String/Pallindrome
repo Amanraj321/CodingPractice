@@ -12,6 +12,13 @@ public class Main {
             }
          return true;
     }
+
+//method 
+ static boolean pallindromee(String str){
+       if(str==null) return false;
+      String str1= str.replaceAll("[^a-zA-Z0-9]","").toLowerCase();
+       return str.equals(new StringBuilder(str).reverse().toString());
+   }
     
     public static void main(String[] args) {
          
