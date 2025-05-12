@@ -1,0 +1,27 @@
+// "static void main" must be defined in a public class.
+
+    public class Main {
+//brute force
+         static void minMax( String str){
+           String[] str1=str.split(",");
+             int[] intArr=new int[str1.length];
+             for(int i=0;i<str1.length;i++){
+                 intArr[i]=Integer.valueOf(str1[i]);
+             }
+             Arrays.sort(intArr);
+                System.out.println("min->"+intArr[0]+"max->"+intArr[intArr.length-1]);
+         }
+
+    public static void main(String[] args) {
+      String str="65,45,98,34";
+ //java 8
+         int max= Arrays.stream(str.split(","))
+              .mapToInt(Integer::parseInt)
+              .max()
+             .orElse(0);
+        System.out.println(max);
+                
+          minMax(str);
+    }
+}
+//min->34max->98
