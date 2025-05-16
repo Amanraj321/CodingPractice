@@ -1,0 +1,16 @@
+public class Main {
+    public static void main(String[] args) {
+       List<String> str = Arrays.asList("rama","ravi","shekhar","mohan");
+         str.stream().filter(s->s.startsWith("r"))//name 
+             .collect(Collectors.toMap(
+            Function.identity(),
+            name->Arrays.stream(name.split("")).distinct().count()
+             ))
+             .forEach((key,value)->System.out.println(key+"->"+value));
+    
+    }
+}
+
+
+//rama -> 3
+//ravi -> 4
