@@ -34,3 +34,19 @@
         System.out.println("Hello World!");
     }
 }
+
+//extension--Find Subarrays With Equal Sum
+
+ public boolean findSubarrays(int[] nums) {
+        int count=1;
+        Map<Integer,Integer> map=new HashMap();
+        for(int i=0;i<nums.length-1;i++){
+                int currSum=nums[i]+nums[i+1];
+                if(map.containsKey(currSum)){
+                    count++;
+                }
+                map.put(currSum,i);        
+        }
+        if(count >=2) return true;
+        return false;
+    }
