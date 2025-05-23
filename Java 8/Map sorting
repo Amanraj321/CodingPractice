@@ -1,0 +1,14 @@
+public class Main {
+   
+    public static void main(String[] args) {
+         
+       Map<Integer,String> map=Map.of(
+        7,"ms Dhoni",18,"virat kohli",10,"sachin",45,"rohit",99,"Hardik");
+        
+       map.entrySet().stream()
+           .filter(e->e.getKey()%2==0)
+           .sorted(Map.Entry.comparingByKey())
+           //.sorted(Map.Entry.<Integer,String>comparingByKey().reversed())
+           .forEach(entry->System.out.println(entry.getKey()+""+entry.getValue())) ;                                                                                                              
+    }
+}

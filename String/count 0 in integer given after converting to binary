@@ -1,0 +1,17 @@
+// "static void main" must be defined in a public class.
+public class Main {
+    
+    static int getzeroCount(int number){
+        int count=0;
+        String str=Integer.toBinaryString(number);
+        for(char c:str.toCharArray()){
+            if(c=='0')
+                count++;
+        }
+        return count;
+    }
+    public static void main(String[] args) {
+        int num=4;
+        System.out.println("Hello World!-"+getzeroCount(num));
+    }
+}

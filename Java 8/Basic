@@ -1,0 +1,62 @@
+***//We explicitly mention the type (Map.Entry<Integer, Employee>) because type inference in lambda expressions //is limited, especially when chaining methods like .reversed().
+public class Main {
+    public static void main(String[] args) {
+  Integer[] arr={3,5,6,4,7,8,5,43};
+//sort an array
+       Arrays.sort(arr);
+        System.out.println("default ordering "+Arrays.toString(arr));
+        //decending orde
+        Arrays.sort(arr,Comparator.reverseOrder());
+        System.out.println("Reverse order "+Arrays.toString(arr));
+        
+//Collection-List
+       List<Integer> list= Arrays.asList(2,5,3,5,5,67,7);
+        //natural order
+        list.sort(Comparator.naturalOrder());
+         System.out.println("natural order "+list);
+        //reverse order
+          list.sort(Comparator.reverseOrder());
+        System.out.println("natural order "+list);
+        
+        //Custom sort
+        list.sort((a,b)->b.compareTo(a));
+         System.out.println("custom ascending  order "+list);
+        
+//Map
+        //ascending 
+       Map<String,Integer> map= Map.of("aman",12,"raj",23,"viki",87);  
+        map.entrySet().stream()
+                      .sorted(Map.Entry.comparingByKey())
+                      .collect(Collectors.toMap(
+                      Map.Entry::getKey,//collect ery for entry set and assign to key
+                      Map.Entry::getValue,
+                      (e1,e2)->e1.getValue(), if key are duplicate take value of e1
+                      LinkedHashMap::new//put in to maintain order
+                      ))
+            
+        //descending
+        map.entrySet().stream()
+                      .sorted(Map.Entry.<String,Integer>comparingByValue().reversed())
+            .forEach(e->System.out.println(e.getKey()+"- "+e.getValue()));
+        
+//Sort map<Integer,List<Employee<name,salary>>> sort by salary
+        
+        map.entrySet().stream()
+            .sorted(Comparator.comparingInt(e->e.getValue().getSalary()).reversed())
+            
+    
+  }
+}
+ 
+// default ordering [3, 4, 5, 5, 6, 7, 8, 43]
+// Reverse order [43, 8, 7, 6, 5, 5, 4, 3]
+// natural order [2, 3, 5, 5, 5, 7, 67]
+// natural order [67, 7, 5, 5, 5, 3, 2]
+// custom ascending  order [67, 7, 5, 5, 5, 3, 2]
+// aman-12
+// raj-23
+// viki-87
+
+// viki- 87
+// raj- 23
+// aman- 12

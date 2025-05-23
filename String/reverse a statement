@@ -18,3 +18,22 @@ public class Main{
            
     }
 }
+//!raj aman is aman My
+
+//tilted form 
+
+public class Main {
+    public static void main(String[] args) {
+    String str=" my name is durulu";
+        StringBuilder strBuilder=new StringBuilder();
+        String[] strArr=str.split(" ");
+        for( String st:strArr){
+            for(int i=st.length()-1;i>=0;i--){
+                strBuilder=strBuilder.append(st.charAt(i));
+            }
+            strBuilder.append(" ");
+        }
+        System.out.println(strBuilder);
+    }
+}
+//ym eman si ulurud 

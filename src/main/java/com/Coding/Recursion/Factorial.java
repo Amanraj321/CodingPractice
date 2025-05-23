@@ -7,7 +7,7 @@ public class Factorial {
     }
 
     int fact(int n) {
-        if (n == 1) {
+        if (n <= 1) {
             //System.out.println(n);
             return n;
         }

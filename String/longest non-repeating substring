@@ -1,0 +1,24 @@
+
+public class Main {
+    public static void main(String[] args) {
+      String longest="";
+      String str="ababcabcd";
+        Map<Character,Integer> map=new LinkedHashMap<>();
+        for(int i=0;i<str.length();i++){
+            //track longest substring
+            if(map.containsKey(str.charAt(i))){
+                if(map.size()>longest.length()){
+                    longest=map.keySet().stream().map(String::valueOf).collect(Collectors.joining());
+                }
+                i=map.get(str.charAt(i));
+                map.clear();
+                continue;
+            }
+            map.put(str.charAt(i),i);  
+        }
+                if(map.size()>longest.length()){
+                    longest=map.keySet().stream().map(String::valueOf).collect(Collectors.joining());
+                }
+       System.out.println(longest);
+    }
+}

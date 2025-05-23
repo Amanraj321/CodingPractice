@@ -1,0 +1,9 @@
+public class Main{
+    public static void main(String[] args) {
+        List<String> list = List.of("1", "2", "4", "Aman");
+        
+       list.stream().filter(e->e.match("\\d+")).collect(Collectors.toList()).forEach(System.out.::println);
+        //System.out.println(Integer.parseInt(str));
+        
+    }
+}

@@ -1,0 +1,42 @@
+
+class Employe{
+    private int id;
+    private String name;
+    private String dept;
+    Employe(int id,String name,String dept){
+        this.id=id;
+        this.name=name;
+        this.dept=dept;
+    }
+    
+    String getDept(){
+        return dept;
+    }
+    String getName(){
+        return name;
+    }
+    
+}
+public class Main {
+    public static void main(String[] args) {
+     List<Employe> list= Arrays.asList(
+      new Employe(1,"sana","IT"),
+          new Employe(2,"Aman","IT"),
+          new Employe(3,"Amit","ECE"),
+          new Employe(4,"Viki","ECE")
+      );
+        
+       Map<String,List<String>> map= list.stream().filter(e->e.getDept().equals("IT")).
+           collect(Collectors.groupingBy(e->e.getDept(),Collectors.mapping(e->e.getName(),Collectors.toList())));
+        System.out.println(map);
+    }
+}
+
+    
+    
+    
+    
+    
+    
+    
+    

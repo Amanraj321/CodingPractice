@@ -1,0 +1,46 @@
+//matrix-transpose-inverse by changing 1st column to last column
+
+public class Main {
+    public static int[][] rotateMatrx(int[][] arr){
+        for(int i=0;i<arr.length;i++){
+            //only exchange upper or lower matrix
+            for(int j=i;j<arr.length;j++){
+                if(i!=j){
+                    int temp=arr[i][j];
+                    arr[i][j]=arr[j][i];
+                    arr[j][i]=temp;
+                }
+            }
+        }
+        for(int i=0;i<arr.length;i++){
+            //constannt swapping with arr[i][j] and arr[i][n-1]
+            for(int j=i;j<arr.length/2;j++){
+                int temp1=arr[i][j];
+                arr[i][j]=arr[i][arr.length-1];
+                arr[i][arr.length-1]=temp1;
+            }
+        }
+        return arr;
+    }
+
+    public static void main(String[] args) {
+          int[][] arr={{1,2,3},{4,5,6},{7,8,9}};
+
+        System.out.println("before");
+        for(int i=0;i<arr.length;i++){
+            for(int j=0;j<arr.length;j++){
+                 System.out.print(arr[i][j]);
+            }
+            System.out.println();
+        }
+        int[][] result= rotateMatrx(arr);
+        System.out.println("After");
+        for(int i=0;i<result.length;i++){
+            for(int j=0;j<result.length;j++){
+                 System.out.print(result[i][j]);
+            }
+            System.out.println();
+        }
+       
+    }
+}
