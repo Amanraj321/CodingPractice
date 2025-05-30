@@ -12,3 +12,6 @@ ublic class FindDuplicates {
         System.out.println("Duplicates: " + duplicates);
     }
 }
+
+
+//duplicate name[Alice, John]
