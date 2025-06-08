@@ -24,17 +24,21 @@ public class Main{
           new Student("vikash",Map.of("Math",44,"phy",84,"chem",48)),
           new Student("Amit",Map.of("Math",94,"phy",34,"chem",28))
       );
-       Map<String,AbstractMap.SimpleEntry<String,Integer>> map= students.stream()
-                                .flatMap(s->s.getMarks().entrySet().stream()
-                                    .map(entry->new AbstractMap.SimpleEntry<>(entry.getKey(),new AbstractMap.SimpleEntry<>(s.getName(),entry.getValue())))) //{subject,{name,marks}}
-                                 .collect(Collectors.toMap(
-                                      Map.Entry::getKey,
-                                      Map.Entry::getValue,  //{name,marks}
-                                      (a,b)->a.getValue()>b.getValue()?a:b
-                                  ));
+       Map<String,Map.Entry<String,Integer>> map= students.stream()
+                    .flatMap(s->s.getMarks().entrySet().stream()
+                    .map(entry->Map.entry(entry.getKey(),Map.entry(s.getName(),entry.getValue()))))
+                     .collect(Collectors.toMap(
+                         Map.Entry::getKey,
+                         Map.Entry::getValue,  //{name,marks} here a,b are this entry
+                         (a,b)->a.getValue()>b.getValue()?a:b
+                        ));
         map.forEach((subject,marks)->
                     System.out.println(subject+"-->"+marks.getKey()+"-->"+marks.getValue())
                     );
         
     }
 }
+
+//phy-->vikash-->84
+//chem-->aman-->78
+//Math-->Amit-->94
