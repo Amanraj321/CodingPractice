@@ -3,7 +3,7 @@ public class Main {
         
         String str="aman";
        String result= IntStream.rangeClosed(1,str.length())
-                        .mapToObj(i->str.charAt(str.length()-i))
+                        .mapToObj(e->str.charAt(str.length()-e))
                         .map(String::valueOf)
                         .collect(Collectors.joining());
         System.out.println("reversed string-->"+result);
