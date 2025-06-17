@@ -11,6 +11,12 @@ public class Main {
        Map<String,List<Integer>> map= list.stream()
             .collect(Collectors.groupingBy(e->e%2==0?"Even":"odd"));
         map.forEach((a,b)->System.out.println(a+""+b));
+
+
+
+//PartioningBy
+
+Map<Boolean.List<Integer>> result=list.stream().collect(Collectors.partitioningBy(e->e%2==0));
             
           
     }
