@@ -30,6 +30,27 @@ public class Main {
            collect(Collectors.groupingBy(e->e.getDept(),Collectors.mapping(e->e.getName(),Collectors.toList())));
         System.out.println(map);
     }
+
+/*
+--inside groupingBy and partioningBy 
+Stream<T>
+  → groupingBy(key)
+      → mapping(T → U)
+          → collect(U)
+*/
+
+4. partitioningBy + mapping
+🎯 Partition employees by salary > 50k, collect names only
+Map<Boolean, List<String>> result =
+    employees.stream()
+        .collect(Collectors.partitioningBy(
+            e -> e.getSalary() > 50_000,
+            Collectors.mapping(
+                Employee::getName,
+                Collectors.toList()
+            )
+        ));
+
 }
 
     
